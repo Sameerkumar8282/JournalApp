@@ -64,14 +64,14 @@ public class JournalEntryController {
     //
     @PutMapping("/id/{myId}")
     public ResponseEntity<?> updateJournal(@PathVariable ObjectId myId, @RequestBody JournalEntryEntity newEntry) {
-//        JournalEntryEntity old = journalEntryService.findById(myId).orElse(null);
-//        if (old != null) {
-//            old.setTitle(newEntry.getTitle() != null && !newEntry.getTitle().equals("") ? newEntry.getTitle() : old.getTitle());
-//            old.setContent(newEntry.getContent() != null && !newEntry.getContent().equals("") ? newEntry.getContent() : old.getContent());
-//
-//            journalEntryService.saveEntry(old);
-//            return new ResponseEntity<>(old, HttpStatus.OK);
-//        }
+        JournalEntryEntity old = journalEntryService.findById(myId).orElse(null);
+        if (old != null) {
+            old.setTitle(newEntry.getTitle() != null && !newEntry.getTitle().equals("") ? newEntry.getTitle() : old.getTitle());
+            old.setContent(newEntry.getContent() != null && !newEntry.getContent().equals("") ? newEntry.getContent() : old.getContent());
+
+            journalEntryService.saveEntry(old);
+            return new ResponseEntity<>(old, HttpStatus.OK);
+        }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
