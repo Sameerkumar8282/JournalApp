@@ -62,8 +62,8 @@ public class JournalEntryController {
     }
 
     //
-    @PutMapping("/id/{myId}")
-    public ResponseEntity<?> updateJournal(@PathVariable ObjectId myId, @RequestBody JournalEntryEntity newEntry) {
+    @PutMapping("/id/{userName}/{myId}")
+    public ResponseEntity<?> updateJournal(@PathVariable ObjectId myId, @RequestBody JournalEntryEntity newEntry, @PathVariable String userName) {
         JournalEntryEntity old = journalEntryService.findById(myId).orElse(null);
         if (old != null) {
             old.setTitle(newEntry.getTitle() != null && !newEntry.getTitle().equals("") ? newEntry.getTitle() : old.getTitle());
